@@ -1,0 +1,216 @@
+/* --- Reset Dasar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #004488;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Warna latar belakang abu muda */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Container --- */
+/* Agar konten tidak terlalu mepet ke pinggir layar */
+.container {
+    width: 90%;
+    max-width: 1200px; /* Lebar maksimal di layar besar */
+    margin: 0 auto; /* Posisi tengah */
+}
+
+
+
+/* --- Header & Footer --- */
+/* --- Styling Sub-Header --- */
+.sub-header {
+    background: #f8f9fa; /* Warna abu-abu sangat muda */
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                      url('https://www.transparenttextures.com/patterns/cubes.png'); /* Pola halus */
+    padding: 20px 0;
+    border-bottom: 2px solid #0056b3; /* Garis bawah biru agar nyambung dengan header */
+    margin-bottom: 30px;
+}
+
+.sub-header-content {
+    display: center;
+    justify-content: space-between; /* Judul di kiri, navigasi di kanan */
+    align-items: center;
+}
+
+.sub-header h2 {
+    font-size: 1.2rem;
+    color: #0056b3;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+
+/* --- Responsive Sub-Header (HP) --- */
+@media (max-width: 600px) {
+    .sub-header-content {
+        flex-direction: column; /* Di HP, teks menumpuk ke bawah */
+        text-align: center;
+        gap: 5px;
+    }
+    
+    .sub-header h2 {
+        font-size: 1rem;
+    }
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- INI KUNCI RESPONSIF: CSS GRID --- */
+.gallery-grid {
+    display: grid;
+    /* Mantra Ajaib Grid:
+       - repeat(auto-fit, ...): Ulangi kolom sebanyak yang muat di layar.
+       - minmax(280px, 1fr): Lebar kolom minimal 280px. Jika ada sisa ruang, bagi rata (1fr).
+       Ini membuat kita TIDAK PERLU media query untuk jumlah kolom di HP vs Laptop.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Jarak antar kartu */
+    padding-bottom: 40px;
+}
+
+/* --- Styling Kartu Prestasi --- */
+.gallery-card {
+    background: white;
+    border-radius: 12px; /* Sudut melengkung */
+    overflow: hidden; /* Agar gambar di dalam ikut melengkung sudutnya */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Bayangan halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek saat mouse menyorot kartu (di laptop) */
+.gallery-card:hover {
+    transform: translateY(-8px); /* Kartu naik sedikit */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Bayangan makin jelas */
+}
+
+/* --- Styling Gambar agar RAPI --- */
+.card-image {
+    height: 220px; /* TINGGI TETAP untuk semua kotak gambar */
+    width: 100%;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    /* KUNCI agar gambar tidak gepeng: */
+    object-fit: cover; 
+    /* Gambar akan dipotong (crop) rapi memenuhi kotak 220px */
+    object-position: center; 
+}
+
+/* --- Styling Caption Teks --- */
+.card-caption {
+    padding: 20px;
+}
+
+.card-caption h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #0056b3;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* RESPONSIVE: Mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+        background-color: white;
+    }
+
+    .nav-links {
+        position: absolute;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: #004488;
+        width: 100%;
+        text-align: center;
+        transition: 0.5s;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        padding: 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+}
